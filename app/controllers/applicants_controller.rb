@@ -25,50 +25,25 @@ class ApplicantsController < ApplicationController
   # POST /applicants.json
   def create
     @applicant = Applicant.new(applicant_params)
-
-    respond_to do |format|
-      if @applicant.save
-        format.html { redirect_to @applicant, notice: 'Applicant was successfully created.' }
-        format.json { render :show, status: :created, location: @applicant }
-      else
-        format.html { render :new }
-        format.json { render json: @applicant.errors, status: :unprocessable_entity }
-      end
+    if @applicant.save
+      @applicant.status = 0
+      @applicant.save
+      redirect_to applicant_path
+    else
+      flash[:error] = @applicant.full_messages.join(',')
+      redirect_to :back
     end
   end
+end
 
-  # PATCH/PUT /applicants/1
-  # PATCH/PUT /applicants/1.json
-  def update
-    respond_to do |format|
-      if @applicant.update(applicant_params)
-        format.html { redirect_to @applicant, notice: 'Applicant was successfully updated.' }
-        format.json { render :show, status: :ok, location: @applicant }
-      else
-        format.html { render :edit }
-        format.json { render json: @applicant.errors, status: :unprocessable_entity }
-      end
-    end
-  end
 
-  # DELETE /applicants/1
-  # DELETE /applicants/1.json
-  def destroy
-    @applicant.destroy
-    respond_to do |format|
-      format.html { redirect_to applicants_url, notice: 'Applicant was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
-
-  private
+private
     # Use callbacks to share common setup or constraints between actions.
     def set_applicant
       @applicant = Applicant.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def applicant_params
-      params.fetch(:applicant, {})
+      params.require(:applicant).permit(:id, :first_name, :last_name, :email, :phone, :zip_code)
     end
-end
+  end

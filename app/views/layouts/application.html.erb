@@ -17,6 +17,10 @@
   </head>
 
   <body>
+    <% if flash[:error] %>
+      <div class="error_report update-box-sub" style="display: block;background-color: red;color: white;"><%= flash[:error] %></div>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
