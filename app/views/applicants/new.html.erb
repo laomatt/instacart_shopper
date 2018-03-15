@@ -1,38 +1,34 @@
 <div class="container main_form">
-	<h1>New Applicant</h1>
-		<div class="col col-lg-12">
-			<h3>applicant</h3>
+		<div class="col col-lg-12 form-contain">
+			<h1>Get paid to shop!</h1>
 			<div class="form-group">
-				<form action="<%= applicant_path %>" id='new_applicant' method="GET">
+				<form action="<%= create_conf_applicants_path %>" id='new_applicant' method="GET">
 					<div class="names row">
 						<div class="input string form-group required col col-lg-6">
-							<input autocorrect="off" tabindex="1" autofocus="autofocus" class="string required form-control" required="required" aria-required="true" placeholder="First Name" type="text" name="applicant[first_name]" id="applicant_first_name">
+							<input autocorrect="off" tabindex="1" autofocus="autofocus" class="string required form-control" required="required" aria-required="true" placeholder="First Name" type="text" name="applicant[first_name]" value="<%= session[:email].nil? ? '' : session[session[:email]]['first_name'] %>" id="applicant_first_name">
 						</div>
 						<div class="input string form-group required col col-lg-6">
-							<input autocorrect="off" tabindex="2" class="string required form-control" required="required" aria-required="true" placeholder="Last Name" type="text" name="applicant[last_name]" id="applicant_last_name">
+							<input autocorrect="off" tabindex="2" class="string required form-control" required="required" aria-required="true" placeholder="Last Name" type="text" name="applicant[last_name]" value="<%= session[:email].nil? ? '' : session[session[:email]]['last_name'] %>" id="applicant_last_name">
 						</div>
 					</div>
 					<div class="input email form-group required applicant_email">
-						<input tabindex="3" required="required" aria-describedby="applicant_email_error" class="string email required form-control" aria-required="true" placeholder="Email" type="email" name="applicant[email]" id="applicant_email">
+						<input tabindex="3" required="required" aria-describedby="applicant_email_error" class="string email required form-control" aria-required="true" placeholder="Email" type="email" name="applicant[email]" value="<%= session[:email].nil? ? '' : session[session[:email]]['email'] %>" id="applicant_email">
 					</div>
 
 					<div class="input tel form-group required applicant_phone">
-						<input tabindex="4" aria-describedby="applicant_phone_error" class="required form-control" required="required" aria-required="true" placeholder="Cell Phone Number" type="tel" name="applicant[phone]" id="applicant_phone">
+						<input tabindex="4" aria-describedby="applicant_phone_error" class="required form-control" required="required" aria-required="true" placeholder="Cell Phone Number" type="tel" name="applicant[phone]" value="<%= session[:email].nil? ? '' : session[session[:email]]['phone'] %>" id="applicant_phone">
 					</div>
 
 					<div class="input string form-group required applicant_zip_code">
-						<input tabindex="5" aria-describedby="applicant_zip_code_error" class="required form-control" required="required" aria-required="true" placeholder="Zip code" type="text" name="applicant[zip_code]" id="applicant_zip_code">
+						<input tabindex="5" aria-describedby="applicant_zip_code_error" class="required form-control" required="required" aria-required="true" placeholder="Zip code" type="text" name="applicant[zip_code]" value="<%= session[:email].nil? ? '' : session[session[:email]]['zip_code'] %>" id="applicant_zip_code">
 					</div>
 
-					<div class="input string form-group optional applicant_referer">
-						<input tabindex="100" autocomplete="referrer" class="string optional form-control" placeholder="Referral Code (optional)" type="text" name="applicant[referer]" id="applicant_referer">
-					</div>
 					</button>
 					<p class="legal">
 						We'll use this information to communicate with you throughout the process.
 					</p>
 				</div>
-				<input type="submit" class='btn btn-lg btn-primary submit'>
+				<input type="submit" class='btn btn-lg submit'>
 			</form>
 		</div>
 </div>

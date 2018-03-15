@@ -1,0 +1,65 @@
+
+
+<div class="container main_form">
+			<h1>Almost there!</h1>
+
+		<div class="col col-lg-12 form-contain">
+		<h3>Please confirm your information:</h3>
+    	<div class="conf_contain">
+    		
+    	<b>
+	    	First Name:
+    	</b>
+    	 <%= session[session[:email]]['first_name'] %>
+    	</div>
+    	<div class="conf_contain">
+    		
+    	<b>
+	    	Last Name:
+    	</b>
+    	 <%= session[session[:email]]['last_name'] %>
+    	</div>
+    	<div class="conf_contain">
+    		
+    	<b>
+	    	Email:
+    	</b>
+    	 <%= session[session[:email]]['email'] %>
+    	</div>
+    	<div class="conf_contain">
+    		
+    	<b>
+	    	Phone:
+    	</b>
+    	 <%= session[session[:email]]['phone'] %>
+    	</div>
+    	<div class="conf_contain">
+    		
+    	<b>
+	    	Zip Code:
+    	</b>
+    	 <%= session[session[:email]]['zip_code'] %>
+    	</div>
+			
+		</div>
+
+		<form action="<%= applicants_path %>" class='submit_form' method="POST" style="display: none;">
+			<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+			<input type="hidden" value="<%= session[:first_name]%>" name="applicant[first_name]">
+			<input type="hidden" value="<%= session[:last_name]%>" name="applicant[last_name]">
+			<input type="hidden" value="<%= session[:email]%>" name="applicant[email]">
+			<input type="hidden" value="<%= session[:phone]%>" name="applicant[phone]">
+			<input type="hidden" value="<%= session[:zip_code]%>" name="applicant[zip_code]">
+			
+		</form>
+		<a href="" class='btn btn-lg conf_buttons confirm'>Confirm</a>
+		<a href="<%= new_applicant_path %>" class='btn btn-lg conf_buttons back'>Back</a>
+</div>
+
+<script>
+	$('body').on('click', '.confirm', function(event) {
+		event.preventDefault();
+		$('.submit_form').trigger('submit');
+	});
+</script>
+
