@@ -19,8 +19,10 @@ end
 
 weeks = []
 
-start_date = Date.parse("2014-1-15")
-end_date = Date.parse("2015-12-15")
+# start_date = Date.parse("2014-1-15")
+# end_date = Date.parse("2015-12-15")
+start_date = Date.parse(ARGV[0])
+end_date = Date.parse(ARGV[1])
 
 while start_date < end_date
 	weeks << {
