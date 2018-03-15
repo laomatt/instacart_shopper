@@ -42,6 +42,6 @@
 * Deployment instructions
 	```
 		gem install mysql2
-		ruby app.rb
+		ruby app.rb 2014-1-15 2015-1-15
 	```
 	
