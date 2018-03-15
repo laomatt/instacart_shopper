@@ -22,6 +22,12 @@ class ApplicantsController < ApplicationController
   def edit
   end
 
+  def thank_you
+    # clear session
+    session[session[:email]] = {}
+    
+  end
+
   def create
     @applicant = Applicant.new(applicant_params)
     # instead of saving it lets imagine that I sent it to some API, and if i get a 200 back i will redirect over
