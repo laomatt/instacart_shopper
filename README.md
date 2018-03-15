@@ -32,7 +32,9 @@
 
 <h5>instructions:</h5>
 <p>first import the database into your local sql server</p>
+
 	```
 		gem install mysql2
+		<br>
 		ruby app.rb
 	```
