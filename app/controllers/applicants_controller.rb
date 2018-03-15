@@ -10,6 +10,7 @@ class ApplicantsController < ApplicationController
   # GET /applicants/1
   # GET /applicants/1.json
   def show
+    @applicant = Applicant.new(applicant_params)
   end
 
   # GET /applicants/new
