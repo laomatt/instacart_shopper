@@ -21,7 +21,6 @@
     <% if flash[:error] %>
       <div class="error_report update-box-sub" style="display: block;background-color: red;color: white;"><%= flash[:error] %></div>
     <% end %>
-  
     <%= yield %>
   </div>
   </body>
@@ -48,7 +47,7 @@
     position: fixed;
     width: 100%;
     height: 100%;
-    background-image: url("http://www.privateeyesbackgroundchecks.com/wp-content/uploads/2017/06/Fast-Grocery-Shopping-Picture.jpg");
+    background-image: url(<%= asset_path 'picture.jpg' %>);
     background-repeat:no-repeat;
     background-position:left center;
     background-size: cover;
